@@ -1,0 +1,22 @@
+<br>
+<br>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Directors</h5>
+        <img src="assets/img/directors.jpg" alt="directors" class="img-fluid" style="width:600px; height:400px" >
+        <a class="nav-link" (click)="routeUser(user.name)" *ngFor="let user of userArray"> {{user.name}}</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Developers</h5>
+        <img src="assets/img/developers.jpg" alt="devs" class="img-fluid" style="width:600px; height:400px">
+        <a class="nav-link" (click)="routeUser(user.name)" *ngFor="let user of userArray"> {{user.name}}</a>
+      </div>
+    </div>
+  </div>
+</div>
