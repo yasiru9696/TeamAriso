@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Dev} from '../modle/dev';
 import {ActivatedRoute} from '@angular/router';
+import {User} from '../modle/user';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-dev',
@@ -9,40 +10,24 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class DevsComponent implements OnInit {
 
-  devArray: Array<Dev> = new Array<Dev>();
-  devs: Dev;
+  devArray: User[] = [];
+  dev: User;
 
-  constructor(private  routerActive: ActivatedRoute) { }
+  constructor(private  routerActive: ActivatedRoute,private userService: UserService) {
+    this.devArray=this.userService.getDev();
+  }
 
   ngOnInit(): void {
-
-    this.devArray.push(this.getDevDetails('4', 'Yasiru','Yasiru Lakshitha','assets/img/yasiru.jpg'));
-    this.devArray.push(this.getDevDetails('5', 'Pavithra','Pavithra Herath','assets/img/pavithra.jpg'));
-
 
     this.routerActive.params.subscribe(params => {
       if (params.name != null){
         this.searchDev(params.name);
-
       }
     });
-
   }
 
-  // tslint:disable-next-line:typedef
-  getDevDetails(id: string, name: string,address: string,imagePath: string){
-    this.devs = new Dev();
-    this.devs.id = id;
-    this.devs.name = name;
-    this.devs.address= address;
-    this.devs.imagePath =imagePath;
-    return this.devs;
-  }
-
-
-  // tslint:disable-next-line:typedef
   searchDev(name: any) {
     console.log(name)
-    this.devs = this.devArray.find(value => value.name === name);
+    this.dev = this.devArray.find(value => value.name === name);
   }
 }

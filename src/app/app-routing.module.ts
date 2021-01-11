@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NaviComponent} from './navi/navi.component';
 import { DashboardComponent} from './dashboard/dashboard.component';
-import {UserComponent} from './user/user.component';
+import {DevsComponent } from './devs/devs.component';
+import {DirectorsComponent } from './directors/directors.component';
+
 
 
 const routes: Routes = [
@@ -10,8 +12,10 @@ const routes: Routes = [
   children: [
     {path: '', redirectTo: 'dashboard', pathMatch : 'full'},
     {path: 'dashboard', component : DashboardComponent},
-    {path: 'user', component : UserComponent},
-    {path: 'user/:name', component : UserComponent},
+    {path: 'dev', component : DevsComponent},
+    {path: 'dev/:name', component : DevsComponent},
+    {path: 'director', component : DirectorsComponent},
+    {path: 'director/:name', component : DirectorsComponent},
 
   ]},
 
